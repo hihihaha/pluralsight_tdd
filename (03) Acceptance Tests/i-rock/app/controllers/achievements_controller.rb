@@ -15,13 +15,28 @@ class AchievementsController < ApplicationController
       render :new
     end
   end
-  
+
+  def update   
+    @achievement = Achievement.find(params[:id])
+    if @achievement.update(achievement_params)
+      redirect_to achievement_url(@achievement), notice: "Achievement has been updated"
+    else
+      render :edit
+    end
+  end
+
   def edit
     @achievement = Achievement.find(params[:id])
   end
 
   def show
     @achievement = Achievement.find(params[:id])
+  end
+
+  def destroy
+    @achievement = Achievement.find(params[:id])
+    @achievement.destroy
+    redirect_to achievements_url
   end
 
   private
