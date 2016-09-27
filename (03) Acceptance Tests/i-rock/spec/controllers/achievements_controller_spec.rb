@@ -1,6 +1,7 @@
 require "rails_helper"
 
 describe AchievementsController do
+  
   describe "GET index" do
     it "renders :new template" do
       get :index
